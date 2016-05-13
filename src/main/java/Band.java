@@ -57,37 +57,41 @@ public class Band {
     }
   }
 
-  // public void addVenue(Recipe newRecipe) {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "INSERT INTO categories_recipes (recipe_id, category_id) VALUES (:recipe, :category)";
-  //     con.createQuery(sql)
-  //       .addParameter("category", this.id)
-  //       .addParameter("recipe",newRecipe.getId())
-  //       .executeUpdate();
-  //   }
-  // }
-  //
-//   public List<Venue> getVenue() {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "SELECT recipe_id FROM categories_recipes WHERE category_id = :category_id";
-//
-//       List<Integer> recipeIds =  con.createQuery(sql)
-//         .addParameter("category_id", this.id)
-//         .executeAndFetch(Integer.class);
-//
-//       List<Recipe> recipes = new ArrayList<Recipe>();
-//
-//       for (Integer recipe_id : recipeIds) {
-//         String recipeQuery = "Select * FROM recipes WHERE id = :recipe_id";
-//         Recipe tempRecipe = con.createQuery(recipeQuery)
-//           .addParameter("recipe_id", recipe_id)
-//           .executeAndFetchFirst(Recipe.class);
-//         recipes.add(tempRecipe);
-//       }
-//       return recipes;
-//     }
-//   }
-//
+  public void addVenue(Venue newVenue) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
+      con.createQuery(sql)
+        .addParameter("band_id", this.getId())
+        .addParameter("venue_id", newVenue.getId())
+        .executeUpdate();
+    }
+  }
+
+  public List<Venue> getVenues() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT venue_id FROM bands_venues WHERE band_id = :band_id";
+
+      List<Integer> venueIds =  con.createQuery(sql)
+        .addParameter("band_id", this.id)
+        .executeAndFetch(Integer.class);
+
+      List<Venue> venues = new ArrayList<Venue>();
+
+      for (Integer venue_id : venueIds) {
+        String venueeQuery = "Select * FROM venues WHERE id = :venue_id";
+        Venue tempVenue = con.createQuery(venueeQuery)
+          .addParameter("venue_id", venue_id)
+          .executeAndFetchFirst(Venue.class);
+        venues.add(tempVenue);
+      }
+      return venues;
+    }
+  }
+
+
+
+
+
   public void update(String newName) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE bands SET name = :name WHERE id = :id";
