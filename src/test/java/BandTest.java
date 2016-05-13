@@ -22,18 +22,18 @@ public class BandTest {
     assertEquals("Lotus", myBand.getName());
   }
 
-//   @Test
-//   public void all_emptyAtFirst() {
-//     assertEquals(Category.all().size(), 0);
-//   }
-//
-//   @Test
-//   public void equals_returnsTrueIfNamesAreTheSame_true() {
-//     Category firstCategory = new Category("Dinner");
-//     Category secondCategory = new Category("Dinner");
-//     assertTrue(firstCategory.equals(secondCategory));
-//   }
-//
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Band.all().size(), 0);
+  }
+
+  @Test
+  public void equals_returnsTrueIfNamesAreTheSame_true() {
+    Band myBand = new Band("Lotus");
+    Band mySecondBand = new Band("Lotus");
+    assertTrue(myBand.equals(mySecondBand));
+  }
+
 //   @Test
 //   public void save_savesObjectIntoDatabase_true() {
 //     Category myCategory = new Category("Dinner");

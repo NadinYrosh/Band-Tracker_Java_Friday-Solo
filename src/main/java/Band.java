@@ -19,24 +19,24 @@ public class Band {
     return id;
   }
 
-//   public static List<Category> all() {
-//     String sql = "SELECT id, name FROM categories";
-//     try(Connection con = DB.sql2o.open()) {
-//       return con.createQuery(sql).executeAndFetch(Category.class);
-//     }
-//   }
-//
-//   @Override
-//   public boolean equals(Object otherCategory) {
-//     if (!(otherCategory instanceof Category)) {
-//       return false;
-//     } else {
-//       Category newCategory =  (Category) otherCategory;
-//       return this.getName().equals(newCategory.getName()) &&
-//              this.getId() == newCategory.getId();
-//     }
-//   }
-//
+  public static List<Band> all() {
+    String sql = "SELECT id, name FROM bands";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Band.class);
+    }
+  }
+
+  @Override
+  public boolean equals(Object otherBand) {
+    if (!(otherBand instanceof Band)) {
+      return false;
+    } else {
+      Band newBand =  (Band) otherBand;
+      return this.getName().equals(newBand.getName()) &&
+             this.getId() == newBand.getId();
+    }
+  }
+
 //   public void save() {
 //     try(Connection con = DB.sql2o.open()) {
 //       String sql = "INSERT INTO categories (name) VALUES (:name)";
