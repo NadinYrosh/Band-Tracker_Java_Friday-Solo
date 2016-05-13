@@ -57,54 +57,42 @@ public class BandTest {
     assertTrue(myBand.equals(savedBand));
   }
 
-//   @Test
-//   public void update_updatesRecipes_true() {
-//     Category myCategory = new Category("Dinner");
-//     myCategory.save();
-//     myCategory.update("Brunch");
-//     assertEquals("Brunch", Category.find(myCategory.getId()).getName());
-//   }
-//
-//   @Test
-//   public void delete_deletesRecipe_true() {
-//     Category myCategory = new Category("Dinner");
-//     myCategory.save();
-//     int myCategoryId = myCategory.getId();
-//     myCategory.delete();
-//     assertEquals(null, Category.find(myCategoryId));
-//   }
-//
-//
-//   // @Test
-//   // public void addBook_addsBookToAuthor() {
-//   //   Book myBook = new Book("Tom Sawyer");
-//   //   myBook.save();
-//   //   Author myAuthor = new Author("Dave", "Smith");
-//   //   myAuthor.save();
-//   //   myAuthor.addBook(myBook);
-//   //   Book savedBook = myAuthor.getBooks().get(0);
-//   //   assertTrue(myBook.equals(savedBook));
-//   // }
-//   //
-//   // @Test
-//   // public void getBooks_returnsAllBooks_List() {
-//   //   Book myBook = new Book("Tom Sawyer");
-//   //   myBook.save();
-//   //   Author myAuthor = new Author("Dave", "Smith");
-//   //   myAuthor.save();
-//   //   myAuthor.addBook(myBook);
-//   //   List savedBooks = myAuthor.getBooks();
-//   //   assertEquals(1, savedBooks.size());
-//   // }
-//   //
-//   // @Test
-//   // public void delete_deletesAllAuthorAndBookAssociations() {
-//   //   Book myBook = new Book("Tom Sawyer");
-//   //   myBook.save();
-//   //   Author myAuthor = new Author("Dave", "Smith");
-//   //   myAuthor.save();
-//   //   myAuthor.addBook(myBook);
-//   //   myAuthor.delete();
-//   //   assertEquals(0, myBook.getAuthors().size());
-//   // }
+  @Test
+  public void update_updatesRecipes_true() {
+    Band myBand = new Band("Lotus");
+    myBand.save();
+    myBand.update("Imagine Dragons");
+    assertEquals("Imagine Dragons", Band.find(myBand.getId()).getName());
+  }
+
+  @Test
+  public void delete_deletesBand_true() {
+    Band myBand = new Band("Lotus");
+    myBand.save();
+    int myBandId = myBand.getId();
+    myBand.delete();
+    assertEquals(null, Band.find(myBandId));
+  }
+
+  // @Test
+  // public void addVenue_addsVenueToBand() {
+  //   Band myBand = new Band("Lotus");
+  //   myBand.save();
+  //   Venue myVenue = new Venue("Rose Garden");
+  //   myVenue.save();
+  //   myBand.addVenue(myVenue);
+  //   assertEquals(myVenue, myBand.getVenues().get(0));
+  // }
+  //
+  // @Test
+  // public void getVenues_returnsAllVenues_List() {
+  //   Band myBand = new Band("Lotus");
+  //   myBand.save();
+  //   Venue myVenue = new Venue("Rose Garden");
+  //   myVenue.save();
+  //   myBand.addVenue(myVenue);
+  //   List savedVenues = myBand.getVenues();
+  //   assertEquals(savedVenues.size(), 1);
+  // }
+
 }

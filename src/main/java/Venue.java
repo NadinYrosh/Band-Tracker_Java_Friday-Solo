@@ -2,46 +2,52 @@ import java.util.List;
 import java.util.ArrayList;
 import org.sql2o.*;
 
-// public class Venue {
-//   private int id;
-//   private String title;
-//   private String instructions;
-//   private Integer rating;
-//
-//   public Venue (String title, String instructions, Integer rating) {
-//     this.title = title;
-//     this.instructions = instructions;
-//     this.rating = rating;
-//   }
-//
-//   public String getTitle() {
-//     return this.title;
-//   }
-//
-//   public String getInstructions() {
-//     return this.instructions;
-//   }
-//   public Integer getRating() {
-//     return this.rating;
-//   }
-//
-//   public int getId() {
-//     return this.id;
-//   }
-//
-//   public void save() {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "INSERT INTO recipes (title, instructions, rating) VALUES (:title, :instructions, :rating)";
-//       this.id = (int) con.createQuery(sql, true)
-//         .addParameter("title", this.title)
-//         .addParameter("instructions", this.instructions)
-//         .addParameter("rating", this.rating)
-//
-//         .executeUpdate()
-//         .getKey();
-//     }
-//   }
-//
+public class Venue {
+  private int id;
+  private String name;
+
+  public Venue (String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return this.name;
+  }
+
+  public int getId() {
+    return this.id;
+  }
+
+  public static List<Venue> all() {
+    String sql = "SELECT id, name FROM venues";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Venue.class);
+    }
+  }
+
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO venues (name) VALUES (:name)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+  @Override
+  public boolean equals(Object otherVenue) {
+    if (!(otherVenue instanceof Venue)) {
+      return false;
+    } else {
+      Venue newVenue =  (Venue) otherVenue;
+      return this.getName().equals(newVenue.getName()) &&
+             this.getId() == newVenue.getId();
+    }
+  }
+
+
 //   public void addCategory(Category newCategory) {
 //     try(Connection con = DB.sql2o.open()) {
 //       String sql = "INSERT INTO categories_recipes (recipe_id, category_id) VALUES (:recipe, :category)";
@@ -134,35 +140,5 @@ import org.sql2o.*;
 //     }
 //   }
 //
-//   public void addIngredient(Ingredient newIngredient) {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id) VALUES (:recipe, :ingredient)";
-//       con.createQuery(sql)
-//         .addParameter("ingredient", newIngredient.getId())
-//         .addParameter("recipe", this.id)
-//         .executeUpdate();
-//     }
-//   }
 //
-//   public List<Ingredient> getIngredients() {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "SELECT ingredient_id FROM recipes_ingredients WHERE recipe_id = :recipe_id";
-//
-//       List<Integer> ingredientIds =  con.createQuery(sql)
-//         .addParameter("recipe_id", this.id)
-//         .executeAndFetch(Integer.class);
-//
-//       List<Ingredient> ingredients = new ArrayList<Ingredient>();
-//
-//       for (Integer ingredient_id : ingredientIds) {
-//         String categoryQuery = "Select * FROM ingredients WHERE id = :ingredient_id";
-//         Ingredient tempIngredient = con.createQuery(categoryQuery)
-//           .addParameter("ingredient_id", ingredient_id)
-//           .executeAndFetchFirst(Ingredient.class);
-//         ingredients.add(tempIngredient);
-//       }
-//       return ingredients;
-//     }
-//   }
-//
-// }
+}
