@@ -34,29 +34,29 @@ public class BandTest {
     assertTrue(myBand.equals(mySecondBand));
   }
 
-//   @Test
-//   public void save_savesObjectIntoDatabase_true() {
-//     Category myCategory = new Category("Dinner");
-//     myCategory.save();
-//     assertTrue(Category.all().get(0).equals(myCategory));
-//   }
-//
-//   @Test
-//   public void save_assignsIdToObject() {
-//     Category myCategory = new Category("Dinner");
-//     myCategory.save();
-//     Category savedCategory = Category.all().get(0);
-//     assertEquals(myCategory.getId(), savedCategory.getId());
-//   }
-//
-//   @Test
-//   public void find_findsCategoriesInDatabase_True() {
-//     Category myCategory = new Category("Dinner");
-//     myCategory.save();
-//     Category savedCategory = Category.find(myCategory.getId());
-//     assertTrue(myCategory.equals(savedCategory));
-//   }
-//
+  @Test
+  public void save_savesObjectIntoDatabase_true() {
+    Band myBand = new Band("Lotus");
+    myBand.save();
+    assertTrue(Band.all().get(0).equals(myBand));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Band myBand = new Band("Lotus");
+    myBand.save();
+    Band savedBand = Band.all().get(0);
+    assertEquals(myBand.getId(), savedBand.getId());
+  }
+
+  @Test
+  public void find_findsBandssInDatabase_True() {
+    Band myBand = new Band("Lotus");
+    myBand.save();
+    Band savedBand = Band.find(myBand.getId());
+    assertTrue(myBand.equals(savedBand));
+  }
+
 //   @Test
 //   public void update_updatesRecipes_true() {
 //     Category myCategory = new Category("Dinner");

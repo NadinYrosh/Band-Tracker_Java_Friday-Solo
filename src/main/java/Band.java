@@ -37,26 +37,26 @@ public class Band {
     }
   }
 
-//   public void save() {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "INSERT INTO categories (name) VALUES (:name)";
-//       this.id = (int) con.createQuery(sql, true)
-//         .addParameter("name", this.name)
-//         .executeUpdate()
-//         .getKey();
-//     }
-//   }
-//
-//   public static Category find(int id) {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "SELECT * FROM categories WHERE id = :id";
-//       Category category = con.createQuery(sql)
-//               .addParameter("id", id)
-//               .executeAndFetchFirst(Category.class);
-//       return category;
-//     }
-//   }
-//
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO bands (name) VALUES (:name)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+  public static Band find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM bands WHERE id = :id";
+      Band band = con.createQuery(sql)
+              .addParameter("id", id)
+              .executeAndFetchFirst(Band.class);
+      return band;
+    }
+  }
+
 //   public void addRecipe(Recipe newRecipe) {
 //     try(Connection con = DB.sql2o.open()) {
 //       String sql = "INSERT INTO categories_recipes (recipe_id, category_id) VALUES (:recipe, :category)";
