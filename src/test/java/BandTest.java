@@ -83,7 +83,7 @@ public class BandTest {
   //   myBand.addVenue(myVenue);
   //   assertEquals(myVenue, myBand.getVenues().get(0));
   // }
-  //
+
   // @Test
   // public void getVenues_returnsAllVenues_List() {
   //   Band myBand = new Band("Lotus");

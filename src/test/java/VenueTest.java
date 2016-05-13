@@ -40,7 +40,6 @@ public class VenueTest {
     assertTrue(Venue.all().get(0).equals(myVenue));
   }
 
-<<<<<<< HEAD
   @Test
   public void save_assignsIdToObject() {
     Venue myVenue = new Venue("Rose Garden");
@@ -57,68 +56,30 @@ public class VenueTest {
     assertTrue(myVenue.equals(savedVenue));
   }
 
-  // @Test
-=======
-  // @Test
-  // public void save_assignsIdToObject() {
-  //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
-  //   myRecipe.save();
-  //   Recipe savedRecipe = Recipe.all().get(0);
-  //   assertEquals(myRecipe.getId(), savedRecipe.getId());
-  // }
+  @Test
+  public void addBand_addsBandToVenue() {
+    Band myBand = new Band("Lotus");
+    myBand.save();
+    Venue myVenue = new Venue("Golden Gate park");
+    myVenue.save();
+    myVenue.addBand(myBand);
+    Band savedBand = myVenue.getBands().get(0);
+    assertTrue(myBand.equals(savedBand));
+  }
+
+  @Test
+  public void getBands_returnsAllBands_List() {
+    Band myBand = new Band("Lotus");
+    myBand.save();
+    Venue myVenue = new Venue("Golden Gate park");
+    myVenue.save();
+    myVenue.addBand(myBand);
+    List savedBands = myVenue.getBands();
+    assertEquals(1, savedBands.size());
+  }
 
   // @Test
-  // public void find_findsRecipesInDatabase_True() {
-  //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
-  //   myRecipe.save();
-  //   Recipe savedRecipe = Recipe.find(myRecipe.getId());
-  //   assertTrue(myRecipe.equals(savedRecipe));
-  // }
-  //
-  // @Test
->>>>>>> e04222b9f569239da868f455c2b15eb054d0c77b
-  // public void update_updatesRecipes_true() {
-  //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
-  //   myRecipe.save();
-  //   myRecipe.update("Scone", "Bake a scone", 10);
-  //   assertEquals("Scone", Recipe.find(myRecipe.getId()).getTitle());
-  //   assertEquals("Bake a scone", Recipe.find(myRecipe.getId()).getInstructions());
-  //   assertTrue(10 == Recipe.find(myRecipe.getId()).getRating());
-  // }
-  //
-  // @Test
-  // public void delete_deletesRecipe_true() {
-  //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
-  //   myRecipe.save();
-  //   int myRecipeId = myRecipe.getId();
-  //   myRecipe.delete();
-  //   assertEquals(null, Recipe.find(myRecipeId));
-  // }
-//------------------------------------------------------------------------//
-  // @Test
-  // public void addBand_addsBandToVenue() {
-  //   Category myCategory = new Category("Dinner");
-  //   myCategory.save();
-  //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
-  //   myRecipe.save();
-  //   myRecipe.addCategory(myCategory);
-  //   Category savedCategory = myRecipe.getCategories().get(0);
-  //   assertTrue(myCategory.equals(savedCategory));
-  // }
-  //
-  // @Test
-  // public void getBands_returnsAllBands_List() {
-  //   Category myCategory = new Category("Dinner");
-  //   myCategory.save();
-  //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
-  //   myRecipe.save();
-  //   myRecipe.addCategory(myCategory);
-  //   List savedCategories = myRecipe.getCategories();
-  //   assertEquals(1, savedCategories.size());
-  // }
-
-  // @Test
-  // public void delete_deletesAllRecipeAndCategoryAssociations() {
+  // public void delete_deletesAllVenueAndBandAssociations() {
   //   Category myCategory = new Category("Dinner");
   //   myCategory.save();
   //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
