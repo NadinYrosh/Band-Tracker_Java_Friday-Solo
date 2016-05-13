@@ -1,21 +1,21 @@
-// import java.util.Map;
-// import java.util.HashMap;
-// import spark.ModelAndView;
-// import spark.template.velocity.VelocityTemplateEngine;
-// import static spark.Spark.*;
-//
-//
-// public class App {
-//   public static void main(String[] args) {
-//     staticFileLocation("/public");
-//     String layout = "templates/layout.vtl";
-//
-//     get("/", (request, response) -> {
-//       Map<String, Object> model = new HashMap<String, Object>();
-//
-//       model.put("template", "templates/index.vtl");
-//       return new ModelAndView(model, layout);
-//     }, new VelocityTemplateEngine());
+import java.util.Map;
+import java.util.HashMap;
+import spark.ModelAndView;
+import spark.template.velocity.VelocityTemplateEngine;
+import static spark.Spark.*;
+
+
+public class App {
+  public static void main(String[] args) {
+    staticFileLocation("/public");
+    String layout = "templates/layout.vtl";
+
+    get("/", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 //
 //     post("/recipes", (request, response) -> {
 //       String name = request.queryParams("name");
@@ -44,16 +44,16 @@
 //       return new ModelAndView(model, layout);
 //     }, new VelocityTemplateEngine());
 //
-//     post("/recipes/:id/ingredient", (request, response)-> {
-//       String name = request.queryParams("ingredient");
-//       Ingredient ingredient = new Ingredient(name);
-//       ingredient.save();
-//       Recipe recipe = Recipe.find(Integer.parseInt(request.params("id")));
-//       recipe.addIngredient(ingredient);
-//       String url = String.format("http://localhost:4567/recipes/%d", recipe.getId());
-//       response.redirect(url);
-//       return null;
-//     });
+    // post("/recipes/:id/ingredient", (request, response)-> {
+    //   String name = request.queryParams("ingredient");
+    //   Ingredient ingredient = new Ingredient(name);
+    //   ingredient.save();
+    //   Recipe recipe = Recipe.find(Integer.parseInt(request.params("id")));
+    //   recipe.addIngredient(ingredient);
+    //   String url = String.format("http://localhost:4567/recipes/%d", recipe.getId());
+    //   response.redirect(url);
+    //   return null;
+    // });
 //
 //     get("/categories", (request, response) -> {
 //       Map<String, Object> model = new HashMap<String, Object>();
@@ -119,5 +119,5 @@
 //       return null;
 //     });
 //
-//   }
-// }
+  }
+}
