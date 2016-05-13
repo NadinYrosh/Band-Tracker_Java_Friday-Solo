@@ -40,6 +40,25 @@ public class VenueTest {
     assertTrue(Venue.all().get(0).equals(myVenue));
   }
 
+<<<<<<< HEAD
+  @Test
+  public void save_assignsIdToObject() {
+    Venue myVenue = new Venue("Rose Garden");
+    myVenue.save();
+    Venue savedVenue = Venue.all().get(0);
+    assertEquals(myVenue.getId(), savedVenue.getId());
+  }
+
+  @Test
+  public void find_findsVenuesInDatabase_True() {
+    Venue myVenue = new Venue("Golden Gate park");
+    myVenue.save();
+    Venue savedVenue = Venue.find(myVenue.getId());
+    assertTrue(myVenue.equals(savedVenue));
+  }
+
+  // @Test
+=======
   // @Test
   // public void save_assignsIdToObject() {
   //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
@@ -57,6 +76,7 @@ public class VenueTest {
   // }
   //
   // @Test
+>>>>>>> e04222b9f569239da868f455c2b15eb054d0c77b
   // public void update_updatesRecipes_true() {
   //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
   //   myRecipe.save();

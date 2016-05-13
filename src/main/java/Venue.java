@@ -15,7 +15,22 @@ public class Venue {
   }
 
   public int getId() {
+<<<<<<< HEAD
+    return id;
+  }
+
+  @Override
+  public boolean equals(Object otherVenue) {
+    if (!(otherVenue instanceof Venue)) {
+      return false;
+    } else {
+      Venue newVenue =  (Venue) otherVenue;
+      return this.getName().equals(newVenue.getName()) &&
+             this.getId() == newVenue.getId();
+    }
+=======
     return this.id;
+>>>>>>> e04222b9f569239da868f455c2b15eb054d0c77b
   }
 
   public static List<Venue> all() {
@@ -36,6 +51,15 @@ public class Venue {
     }
   }
 
+<<<<<<< HEAD
+  public static Venue find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM venues where id=:id";
+      Venue venue = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Venue.class);
+      return venue;
+=======
   @Override
   public boolean equals(Object otherVenue) {
     if (!(otherVenue instanceof Venue)) {
@@ -44,6 +68,7 @@ public class Venue {
       Venue newVenue =  (Venue) otherVenue;
       return this.getName().equals(newVenue.getName()) &&
              this.getId() == newVenue.getId();
+>>>>>>> e04222b9f569239da868f455c2b15eb054d0c77b
     }
   }
 
@@ -110,6 +135,8 @@ public class Venue {
 //     }
 //   }
 //
+<<<<<<< HEAD
+=======
 //   public static Recipe find(int id) {
 //     try(Connection con = DB.sql2o.open()) {
 //       String sql = "SELECT * FROM recipes WHERE id = :id";
@@ -141,4 +168,5 @@ public class Venue {
 //   }
 //
 //
+>>>>>>> e04222b9f569239da868f455c2b15eb054d0c77b
 }
