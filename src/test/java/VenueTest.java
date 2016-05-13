@@ -3,6 +3,7 @@ import org.junit.*;
 import java.util.List;
 import static org.junit.Assert.*;
 import static org.junit.Assert.*;
+import java.util.ArrayList;
 
 public class VenueTest {
 
