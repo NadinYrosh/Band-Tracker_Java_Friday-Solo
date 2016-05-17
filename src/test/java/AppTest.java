@@ -30,15 +30,13 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Band Tracker");
   }
 
-//   @Test
-//   public void recipeIsCreatedTest() {
-//     goTo("http://localhost:4567/");
-//     fill("#recipe").with("this is the best recipe");
-//     fill("#name").with("Big Burger");
-//     fill("#rating").with("5");
-//     submit("#save-recipe");
-//     assertThat(pageSource()).contains("Big Burger");
-//   }
+  @Test
+  public void BandIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    fill("#input_band").with("Lotus");
+    submit("#save_band");
+    assertThat(pageSource()).contains("Lotus");
+  }
 //
 //   @Test
 //   public void recipeIsDisplayedTest() {

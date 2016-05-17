@@ -12,21 +12,25 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-
+      model.put("bands", Band.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-//
-//     post("/recipes", (request, response) -> {
-//       String name = request.queryParams("name");
-//       String recipe = request.queryParams("recipe");
-//       Integer rating = Integer.parseInt(request.queryParams("rating"));
-//       Recipe newRecipe = new Recipe (name, recipe, rating);
-//       newRecipe.save();
-//       response.redirect("/recipes");
-//       return null;
-//     });
-//
+
+//Band -----//
+
+    post("/bands/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String input_band = request.queryParams("input_band");
+      Band newBand = new Band(input_band);
+      if ((newBand.getName()).trim().length() != 0) {
+        newBand.save();
+      }
+      response.redirect("/");
+      return null;
+    });
+
+
 //     get("/recipes", (request, response) -> {
 //       Map<String, Object> model = new HashMap<String, Object>();
 //
