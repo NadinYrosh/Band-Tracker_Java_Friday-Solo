@@ -9,7 +9,7 @@ index.vtl
         <h4><a href="/band/$band.getId()">$band.getName()</a>
       #end
   <hr>
-  <form action="/bands/new" method="post">
+  <form action="/bands/form" method="post">
           <label for="input_band">Add a New Band</label>
           <input id="input_band" name="input_band" type="text" class="form-control">
           <br>
@@ -26,11 +26,11 @@ index.vtl
       #end
     <hr>
 
-      <form action="/venues/new" method="post">
+      <form action="/venues/form" method="post">
         <label for="input_venue">Add a New Venue</label>
         <input id="input_venue" name="input_venue" type="text" class="form-control">
         <br>
-        <button id="add_button_venue" type="submit" class="btn btn-success">Add</button>
+        <button id="add_venue" type="submit" class="btn btn-success">Add</button>
       </form>
   </div>
 </div>

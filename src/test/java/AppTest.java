@@ -37,6 +37,14 @@ public class AppTest extends FluentTest {
     submit("#save_band");
     assertThat(pageSource()).contains("Lotus");
   }
+
+  @Test
+  public void VenueIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    fill("#input_venue").with("Rose park");
+    submit("#add_venue");
+    assertThat(pageSource()).contains("Rose park");
+  }
 //
 //   @Test
 //   public void recipeIsDisplayedTest() {

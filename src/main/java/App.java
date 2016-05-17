@@ -13,18 +13,32 @@ public class App {
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("bands", Band.all());
+      model.put("venues", Venue.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
 //Band -----//
 
-    post("/bands/new", (request, response) -> {
+    post("/bands/form", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String input_band = request.queryParams("input_band");
       Band newBand = new Band(input_band);
       if ((newBand.getName()).trim().length() != 0) {
         newBand.save();
+      }
+      response.redirect("/");
+      return null;
+    });
+
+//Venue -----//
+
+    post("/venues/form", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String input_venue = request.queryParams("input_venue");
+      Venue newVenue = new Venue(input_venue);
+      if ((newVenue.getName()).trim().length() != 0) {
+        newVenue.save();
       }
       response.redirect("/");
       return null;
