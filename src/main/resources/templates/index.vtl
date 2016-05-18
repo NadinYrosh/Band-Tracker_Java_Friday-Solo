@@ -21,9 +21,11 @@ index.vtl
 
   <div class="col col-sm-6">
     <h3>Venues:</h3>
+    <ul>
       #foreach($venue in $venues)
-        <h4><a href="/venue/$venue.getId()">$venue.getName()</a>
+        <li><h4>$venue.getName()</h4></li>
       #end
+    </ul>
     <hr>
 
       <form action="/venues/form" method="post">

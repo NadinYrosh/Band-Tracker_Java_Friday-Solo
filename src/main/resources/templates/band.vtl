@@ -2,15 +2,20 @@ band.vtl
 
 <h1>$band.getName()</h1>
 <form action="/bands/$band.getId()/update_form" method="post">
-        <label for="update_band">Update this band</label>
-        <input id="update_band" name="update_band" type="text" class="form-control" required>
-        <br>
-        <button id="update_band_btn" type="submit" class="btn btn-success">Update</button>
-      </form>
-</div>
+  <label for="update_band">Update this band</label>
+  <input id="update_band" name="update_band" type="text" class="form-control" required>
+  <br>
+  <button id="update_band_btn" type="submit" class="btn btn-success">Update</button>
+</form>
+<br>
+
+<a href="/band/$band.getId()/delete" class="btn btn-danger">Delete</a>
+<a href="/" class="btn btn-primary">Home</a>
+<hr>
 
 <ul>
   #foreach ($venue in $band.getVenues())
     <h2><li>$venue.getName()</li></h2>
   #end
 </ul>
+<hr>

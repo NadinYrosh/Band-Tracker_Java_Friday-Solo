@@ -34,10 +34,26 @@ public class App {
       String inputUpdate = request.queryParams("update_band");
       Band band = Band.find(Integer.parseInt(request.params(":id")));
       band.update(inputUpdate);
-      response.redirect("/band");
+      response.redirect("/band/" + band.getId());
       return null;
     });
 
+    get("/band/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      model.put("band", band);
+      model.put("venues", Venue.all());
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/band/:id/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      band.delete();
+      response.redirect("/");
+      return null;
+    });
 
 
 //Venue -----//
