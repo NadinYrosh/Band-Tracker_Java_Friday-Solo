@@ -45,15 +45,34 @@ public class AppTest extends FluentTest {
     submit("#add_venue");
     assertThat(pageSource()).contains("Rose park");
   }
-//
-//   @Test
-//   public void recipeIsDisplayedTest() {
-//     Recipe newRecipe = new Recipe("Pie", "Bake a pie", 5);
-//     newRecipe.save();
-//     String url = String.format("http://localhost:4567/recipes/%d", newRecipe.getId());
-//     goTo(url);
-//     assertThat(pageSource()).contains("Bake a pie");
-//   }
+
+  @Test
+  public void bandIsCreatedAndDisplayedTest() {
+   goTo("http://localhost:4567/");
+   fill("#input_band").with("Lotus");
+   submit("#save_band");
+   assertThat(pageSource()).contains("Lotus");
+  }
+
+  @Test
+  public void venueIsCreatedAndDisplayedTest() {
+   goTo("http://localhost:4567/");
+   fill("#input_venue").with("Rose Park");
+   submit("#add_venue");
+   assertThat(pageSource()).contains("Rose Park");
+  }
+
+  @Test
+  public void bandShowPageDisplaysName() {
+   Band testBand = new Band("Lotus");
+   testBand.save();
+   String url = String.format("http://localhost:4567/band/%d", testBand.getId());
+   goTo(url);
+   assertThat(pageSource()).contains("Lotus");
+ }
+
+
+
 //
 //   @Test
 //   public void ingredientAddedToRecipePage() {

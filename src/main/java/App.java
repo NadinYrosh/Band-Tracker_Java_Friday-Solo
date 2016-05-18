@@ -24,12 +24,21 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       String input_band = request.queryParams("input_band");
       Band newBand = new Band(input_band);
-      if ((newBand.getName()).trim().length() != 0) {
-        newBand.save();
-      }
+      newBand.save();
       response.redirect("/");
       return null;
     });
+
+    post("/bands/:id/update_form", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String inputUpdate = request.queryParams("update_band");
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      band.update(inputUpdate);
+      response.redirect("/band");
+      return null;
+    });
+
+
 
 //Venue -----//
 

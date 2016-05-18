@@ -1,49 +1,16 @@
-<!-- band.vtl
+band.vtl
 
-<h1>$recipe.getTitle()</h1>
-
-<h2>$recipe.getInstructions()</h2>
+<h1>$band.getName()</h1>
+<form action="/bands/$band.getId()/update_form" method="post">
+        <label for="update_band">Update this band</label>
+        <input id="update_band" name="update_band" type="text" class="form-control" required>
+        <br>
+        <button id="update_band_btn" type="submit" class="btn btn-success">Update</button>
+      </form>
+</div>
 
 <ul>
-  #foreach ($ingredient in $recipe.getIngredients())
-    <h2><li>$ingredient.getName()</li></h2>
+  #foreach ($venue in $band.getVenues())
+    <h2><li>$venue.getName()</li></h2>
   #end
 </ul>
-
-<form action="/recipes/$recipe.getId()/ingredient" method="post">
-  <input type=text list="ingredient" name="ingredient">
-    <datalist id="ingredient" >
-      <option> Eggs
-      <option> Flour
-      <option> Baking Soda
-      <option> Baking Powder
-      <option> Sugar
-      <option> Peach
-      <option> Vanilla Extract
-    </datalist>
-
-  <button type="submit" class="btn btn-info" id = "add-ingredient" >Add ingredient</button>
-</form>
-<hr>
-
-<form action="/recipes/$recipe.getId()/edit" method="post">
-  <label for="name">Enter new title:</label>
-  <input id="name" name="name" type="text">
-  <br>
-  <label for="recipe">Enter new recipe:</label>
-  <textarea id="recipe" name="recipe" type="text"></textarea>
-  <br>
-  <label for="rating">Rate your recipe:</label>
-  <input id="rating" name="rating" type="number">
-  <br>
-  <button type="submit" class="btn btn-success" id="update">Edit Category</button>
-</form>
-<br>
-<form action="/recipes/$recipe.getId()/delete" method="post">
-  <button  type="submit" class="btn btn-danger" id="delete">Delete this recipe</button>
-</form>
-
-<hr>
-
-<a class="btn btn-info" href="/">Create New Recipe</a>
-<a class="btn btn-info" href="/categories">Add Recipe To Category</a> -->
