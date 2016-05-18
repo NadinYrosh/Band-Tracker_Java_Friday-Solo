@@ -90,6 +90,18 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/venue/:id/band_to_venue", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Venue venue = Venue.find(Integer.parseInt(request.params(":id")));
+
+      String stringId = request.queryParams("add_band");
+      Integer intId = Integer.parseInt(stringId);
+      Band band = Band.find(intId);
+      venue.addBand(band);
+
+      response.redirect("/venue/" + venue.getId());
+      return null;
+    });
 
   }
 }
