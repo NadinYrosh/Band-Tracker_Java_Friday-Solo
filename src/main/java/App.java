@@ -55,6 +55,14 @@ public class App {
       return null;
     });
 
+    post("/band/:id/venue_to_band", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      band.delete();
+      response.redirect("/band/" + band.getId());
+      return null;
+    });
+
 
 //Venue -----//
 
