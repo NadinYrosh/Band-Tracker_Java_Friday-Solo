@@ -1,0 +1,26 @@
+venue.vtl
+
+<h1>$venue.getName()</h1>
+<a href="/" class="btn btn-primary">Home</a>
+<hr>
+
+<h3>This is a list of bands for this venue.</h3>
+<ul>
+  #foreach ($band in $venue.getBands())
+    <h4><li>$band.getName()</li></h4>
+  #end
+</ul>
+<hr>
+
+<form action="/venue/$venue.getId()/band_to_venue" method="post">
+  <h4>
+    <label for="add_band">Select a band to add to this venue</label>
+    <select id="add_band" name="add_band" type="text" class="form-control">
+      #foreach($band in $bands)
+        <option value="$band.getId()">$band.getName()</option>
+      #end
+    </select>
+  </h4>
+  <br>
+  <button id="add_band_btn" type="submit" class="btn btn-success">Add</button>
+</form>

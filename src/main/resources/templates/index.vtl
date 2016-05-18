@@ -6,7 +6,7 @@ index.vtl
   <div class="col col-sm-6">
     <h3>Bands:</h3>
       #foreach($band in $bands)
-        <h4><a href="/band/$band.getId()">$band.getName()</a>
+        <h4><a href="/band/$band.getId()">$band.getName()</a></h4>
       #end
   <hr>
   <form action="/bands/form" method="post">
@@ -23,14 +23,14 @@ index.vtl
     <h3>Venues:</h3>
     <ul>
       #foreach($venue in $venues)
-        <li><h4>$venue.getName()</h4></li>
+        <h4><a href="/venue/$venue.getId()">$venue.getName()</a></h4>
       #end
     </ul>
     <hr>
 
       <form action="/venues/form" method="post">
         <label for="input_venue">Add a New Venue</label>
-        <input id="input_venue" name="input_venue" type="text" class="form-control">
+        <input id="input_venue" name="input_venue" type="text" class="form-control" required>
         <br>
         <button id="add_venue" type="submit" class="btn btn-success">Add</button>
       </form>
