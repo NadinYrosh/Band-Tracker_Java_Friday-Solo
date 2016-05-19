@@ -48,65 +48,61 @@ public class AppTest extends FluentTest {
 
   @Test
   public void bandIsCreatedAndDisplayedTest() {
-   goTo("http://localhost:4567/");
-   fill("#input_band").with("Lotus");
-   submit("#save_band");
-   assertThat(pageSource()).contains("Lotus");
+    goTo("http://localhost:4567/");
+    fill("#input_band").with("Lotus");
+    submit("#save_band");
+    assertThat(pageSource()).contains("Lotus");
   }
 
   @Test
   public void venueIsCreatedAndDisplayedTest() {
-   goTo("http://localhost:4567/");
-   fill("#input_venue").with("Rose Park");
-   submit("#add_venue");
-   assertThat(pageSource()).contains("Rose Park");
+    goTo("http://localhost:4567/");
+    fill("#input_venue").with("Rose Park");
+    submit("#add_venue");
+    assertThat(pageSource()).contains("Rose Park");
   }
 
   @Test
   public void bandShowPageDisplaysName() {
-   Band testBand = new Band("Lotus");
-   testBand.save();
-   String url = String.format("http://localhost:4567/band/%d", testBand.getId());
-   goTo(url);
-   assertThat(pageSource()).contains("Lotus");
+    Band testBand = new Band("Lotus");
+    testBand.save();
+    String url = String.format("http://localhost:4567/band/%d", testBand.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("Lotus");
  }
 
  @Test
  public void venueIsAddedToBandTest() {
-   Band testBand = new Band("Lotus");
-   testBand.save();
-   Venue testVenue = new Venue("Rose Garden");
-   testVenue.save();
-   String url = String.format("http://localhost:4567/band/%d", testBand.getId());
-   goTo(url);
-   click("option", withText("Rose Garden"));
-   submit("#add_venue_btn");
-   assertThat(pageSource()).contains("Rose Garden");
+    Band testBand = new Band("Lotus");
+    testBand.save();
+    Venue testVenue = new Venue("Rose Garden");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/band/%d", testBand.getId());
+    goTo(url);
+    click("option", withText("Rose Garden"));
+    submit("#add_venue_btn");
+    assertThat(pageSource()).contains("Rose Garden");
  }
 
- @Test
- public void venueShowPageDisplaysName() {
-  Venue testVenue = new Venue("Rose Garden");
-  testVenue.save();
-  String url = String.format("http://localhost:4567/venue/%d", testVenue.getId());
-  goTo(url);
-  assertThat(pageSource()).contains("Rose Garden");
-}
+  @Test
+    public void venueShowPageDisplaysName() {
+    Venue testVenue = new Venue("Rose Garden");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/venue/%d", testVenue.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("Rose Garden");
+  }
 
-@Test
-public void bandIsAddedToVenueTest() {
-  Band testBand = new Band("Lotus");
-  testBand.save();
-  Venue testVenue = new Venue("Rose Garden");
-  testVenue.save();
-  String url = String.format("http://localhost:4567/venue/%d", testVenue.getId());
-  goTo(url);
-  click("option", withText("Lotus"));
-  submit("#add_band_btn");
-  assertThat(pageSource()).contains("Lotus");
-}
-
-
-
-
+  @Test
+  public void bandIsAddedToVenueTest() {
+    Band testBand = new Band("Lotus");
+    testBand.save();
+    Venue testVenue = new Venue("Rose Garden");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/venue/%d", testVenue.getId());
+    goTo(url);
+    click("option", withText("Lotus"));
+    submit("#add_band_btn");
+    assertThat(pageSource()).contains("Lotus");
+  }
 }

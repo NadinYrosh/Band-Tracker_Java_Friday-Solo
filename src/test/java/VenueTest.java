@@ -78,15 +78,4 @@ public class VenueTest {
     List savedBands = myVenue.getBands();
     assertEquals(1, savedBands.size());
   }
-
-  // @Test
-  // public void delete_deletesAllVenueAndBandAssociations() {
-  //   Category myCategory = new Category("Dinner");
-  //   myCategory.save();
-  //   Recipe myRecipe = new Recipe("Pie", "Bake a pie", 5);
-  //   myRecipe.save();
-  //   myRecipe.addCategory(myCategory);
-  //   myRecipe.delete();
-  //   assertEquals(0, myRecipe.getCategories().size());
-  // }
 }

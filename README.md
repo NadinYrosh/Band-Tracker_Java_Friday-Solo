@@ -33,15 +33,15 @@ In psql run:
 
 In terminal run:
 ```
-$ psql band_trecker < band_trecker.sql
+$ psql band_trecker < band_tracker.sql
 ```
 
 Switch to psql and run:
 ```
-# \c band_trecker
+# \c band_tracker
 # \dt
 ```
-This will list all of the tables in the `band_trecker` database
+This will list all of the tables in the `band_tracker` database
 
 Navigate back to the directory where this repository has been cloned and run gradle:
 ```
